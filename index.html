@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW 7 - My Webpage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: lavender;
+        }
+
+        header {
+            background-color: purple;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        nav {
+            width: 180px;
+            background-color: #e6ccff;
+            padding: 15px;
+            float: left;
+            box-sizing: border-box;
+        }
+
+        nav h3 {
+            text-align: center;
+        }
+
+        nav a {
+            display: block;
+            padding: 12px;
+            color: black;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: purple;
+            color: white;
+        }
+
+        main {
+            margin-left: 200px;
+            padding: 25px;
+        }
+
+        input {
+            display: block;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            padding: 8px;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        button {
+            background-color: purple;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #9932cc;
+        }
+
+        /* Responsive layout below 500px */
+        @media screen and (max-width: 500px) {
+            nav {
+                width: 100%;
+                float: none;
+                text-align: center;
+            }
+
+            nav a {
+                display: inline-block;
+                padding: 10px;
+            }
+
+            main {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Welcome to My Webpage</h1>
+    
+    </header>
+
+    <!-- Side Navigation Bar -->
+    <nav>
+        <h3>Navigation</h3>
+
+        <a href="https://www.yahoo.com">
+            Yahoo
+        </a>
+
+        <a href="https://www.google.com">
+            Google
+        </a>
+
+        <a href="https://www.facebook.com">
+            Facebook
+        </a>
+    </nav>
+
+    <main>
+
+        <h2>Random Number Generator</h2>
+
+        <p>
+            Click the button to generate a random
+            number and visit a website!
+        </p>
+
+        <button onclick="randomWebsite()">
+            Generate Random Number
+        </button>
+
+        <p id="result"></p>
+
+        <hr>
+
+        <h2>Registration Form</h2>
+
+        <p>Please fill out all three fields.</p>
+
+        <form onsubmit="return validateForm()">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+
+            <label for="email">Email:</label>
+            <input type="text" id="email">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password">
+
+            <button type="submit">
+                Submit
+            </button>
+
+        </form>
+
+    </main>
+
+    <script>
+
+        // Random number feature
+        function randomWebsite() {
+
+            let number = Math.floor(Math.random() * 10) + 1;
+
+            document.getElementById("result").innerHTML =
+                "Your random number is: " + number;
+
+            if (number < 3) {
+                window.location.href =
+                    "https://www.yahoo.com";
+            }
+
+            else if (number >= 3 && number <= 5) {
+                window.location.href =
+                    "https://www.google.com";
+            }
+
+            else {
+                window.location.href =
+                    "https://www.facebook.com";
+            }
+        }
+
+        // Form validation
+        function validateForm() {
+
+            let name =
+                document.getElementById("name").value.trim();
+
+            let email =
+                document.getElementById("email").value.trim();
+
+            let password =
+                document.getElementById("password").value.trim();
+
+            if (name === "" || email === "" || password === "") {
+
+                alert("Please fill out all three fields.");
+                return false;
+
+            }
+
+            else {
+
+                alert("Form submitted successfully!");
+                return false;
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>
